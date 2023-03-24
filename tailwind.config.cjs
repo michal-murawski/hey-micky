@@ -1,11 +1,13 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: 'class',
+
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
-    extend: {
-      animation: {
-        'spin-slow': 'spin 20s linear infinite',
-      }
-    },
+    extend: {},
   },
-  plugins: [],
-}
+  plugins: [require('flowbite/plugin')],
+  ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {}),
+};
